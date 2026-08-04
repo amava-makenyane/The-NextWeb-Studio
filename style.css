@@ -1,0 +1,364 @@
+/* ===== COLOURS ===== */
+:root {
+  --navy: #0B1426;
+  --dark-navy: #070E1A;
+  --silver: #C5CDD8;
+  --light-silver: #E8EDF5;
+  --white: #FFFFFF;
+  --accent: #4A90E2;
+}
+/* Light Theme Variables */
+[data-theme="light"] {
+  --navy: #F5F8FC;
+  --dark-navy: #FFFFFF;
+  --silver: #4A5568;
+  --light-silver: #1A202C;
+  --white: #0B1426;
+  --accent: #2B6CB0;
+}
+
+[data-theme="light"] body {
+  background-color: var(--navy);
+  color: var(--light-silver);
+}
+
+[data-theme="light"] header {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .service-card,
+[data-theme="light"] .price-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .hero {
+  background: linear-gradient(145deg, #F5F8FC 0%, #E8F0FE 100%);
+}
+
+[data-theme="light"] footer {
+  background: #E2E8F0 !important;
+  color: #4A5568 !important;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--navy);
+  color: var(--light-silver);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== LOADER ===== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--dark-navy);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-logo {
+  width: 90px;
+  animation: spin 1.4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(11, 20, 38, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(197, 205, 216, 0.1);
+  z-index: 100;
+}
+
+.logo-img {
+  height: 42px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--silver);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--white);
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 2px;
+  background: var(--silver);
+  transition: 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  position: relative;
+  background: linear-gradient(145deg, #0B1426 0%, #101C33 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  width: 380px;
+  height: 380px;
+  background-image: url('logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3.3rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 span {
+  color: var(--silver);
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--silver);
+  margin-bottom: 2.2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.9rem 2.1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #3A7BC8;
+  transform: translateY(-2px);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 6rem 8%;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.section-title span {
+  color: var(--silver);
+}
+
+/* ===== SERVICE CARDS ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  background: #122038;
+  padding: 2.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(197, 205, 216, 0.08);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(74, 144, 226, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.service-card h3 {
+  color: var(--light-silver);
+  margin-bottom: 0.8rem;
+  font-size: 1.25rem;
+}
+
+.service-card p {
+  color: var(--silver);
+  font-size: 0.95rem;
+}
+
+/* ===== PRICING CARDS ===== */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  margin-top: 3rem;
+}
+
+.price-card {
+  background: #122038;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(197, 205, 216, 0.08);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.price-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.price-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.price-card h3 {
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.price-card .price {
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.price-card p {
+  color: var(--silver);
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 6%;
+    background: var(--dark-navy);
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 10px;
+    gap: 1.2rem;
+    display: none;
+    border: 1px solid rgba(197, 205, 216, 0.1);
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero::before {
+    width: 220px;
+    height: 220px;
+    opacity: 0.05;
+    right: 5%;
+  }
+
+  section {
+    padding: 4.5rem 6%;
+  }
+  .theme-toggle {
+  background: none;
+  border: 1px solid var(--silver);
+  color: var(--silver);
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  margin-left: 1.5rem;
+}
+
+.theme-toggle:hover {
+  background: rgba(74, 144, 226, 0.15);
+  color: var(--white);
+}
+}
